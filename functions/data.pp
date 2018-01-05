@@ -24,7 +24,7 @@ function nginx::data {
       $os_params = { 
         'nginx::config_vdir_enable'  => "${config_dir}",
         'nginx::config_process_user' => 'www-data',
-        'nginx::vhost_dir'           => "${config_dir}/sites-avaliable",
+        'nginx::vhost_dir'           => "${config_dir}",
       }
     }
     default: {
