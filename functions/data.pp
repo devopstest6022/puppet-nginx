@@ -31,7 +31,7 @@ function nginx::data {
       $os_params = {
         'nginx::config_vdir_enable'  => undef,
         'nginx::config_process_user' => 'nginx',
-        'nginx::vhost_dir'           => $config_confd,
+        'nginx::vhost_dir'           => "${config_confd}",
       }
     }
   }
