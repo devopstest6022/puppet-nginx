@@ -22,8 +22,8 @@ function nginx::data {
   case $facts['os']['family'] {
     'Debian': {
       $os_params = { 
-        'nginx::config_vdir_enable'  => $config_dir,
-        'nginx::config_process_user' => $www-data,
+        'nginx::config_vdir_enable'  => "${config_dir}",
+        'nginx::config_process_user' => 'www-data',
         'nginx::vhost_dir'           => "${config_dir}/sites-avaliable",
       }
     }
