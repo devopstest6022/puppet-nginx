@@ -22,16 +22,16 @@ function nginx::data {
   case $facts['os']['family'] {
     'Debian': {
       $os_params = { 
-        'config_vdir_enable'  => $config_dir,
-        'config_process_user' => $www-data,
-        'vhost_dir'           => "${config_dir}/sites-avaliable",
+        'nginx::config_vdir_enable'  => $config_dir,
+        'nginx::config_process_user' => $www-data,
+        'nginx::vhost_dir'           => "${config_dir}/sites-avaliable",
       }
     }
     default: {
       $os_params = {
-        'config_vdir_enable'  => undef,
-        'config_process_user' => 'nginx',
-        'vhost_dir'           => $config_confd,
+        'nginx::config_vdir_enable'  => undef,
+        'nginx::config_process_user' => 'nginx',
+        'nginx::vhost_dir'           => $config_confd,
       }
     }
   }
