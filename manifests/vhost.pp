@@ -1,8 +1,8 @@
 define nginx::vhost(
   Integer $port                        = 80,
   String $priority                     = '50',
-  String $server_aliases               = '',
-  Boolean $enable                      = true,
+  #String $server_aliases               = '',
+  #Boolean $enable                      = true,
   String $owner                        = $::nginx::config_owner,
   String $group                        = $::nginx::config_group,
   String $mode                         = $::nginx::config_mode,

@@ -17,26 +17,23 @@ function nginx::data {
     'nginx::service_hasstatus'           => true,
     'nginx::service_hasrestart'          => true,
     'nginx::docroot'                     => '/usr/share/nginx',
-    'nginx::config_vdir_enable'          => undef,
-            'nginx::config_process_user' => 'nginx',
-                    'nginx::vhost_dir'   => "${config_confd}",
   }
   
-  #case $facts['os']['family'] {
-    # 'Debian': {
-      # $os_params = { 
-        # 'nginx::config_vdir_enable'  => "${config_dir}",
-        #'nginx::config_process_user' => 'www-data',
-        #'nginx::vhost_dir'           => "${config_dir}",
-        # }
-        # }
-        #default: {
-          # $os_params = {
-            #'nginx::config_vdir_enable'  => undef,
-            #'nginx::config_process_user' => 'nginx',
-            #'nginx::vhost_dir'           => "${config_confd}",
-            # }
-            # }
-            # }
-            #$base_params + $os_params
+  case $facts['os']['family'] {
+    'Debian': {
+      $os_params = { 
+        'nginx::config_vdir_enable'  => "${config_dir}",
+        'nginx::config_process_user' => 'www-data',
+        'nginx::vhost_dir'           => "${config_dir}",
+         }
+     }
+     default: {
+       $os_params = {
+          'nginx::config_vdir_enable'  => undef,
+          'nginx::config_process_user' => 'nginx',
+          'nginx::vhost_dir'           => "${config_confd}",
+      }
+    }
+  }
+  $base_params + $os_params
 }
